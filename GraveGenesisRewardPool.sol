@@ -625,15 +625,15 @@ contract GraveGenesisRewardPool {
     address public taxWallet;
 
     // TESTNET
-    uint256 public GravePerSecond = 0.00555555555 ether; // 20 grave / (1h * 60min * 60s )
-    uint256 public runningTime = 1 hours; // 1 hours
-    uint256 public constant TOTAL_REWARDS = 20 ether;
+   // uint256 public GravePerSecond = 0.00555555555 ether; // 20 grave / (1h * 60min * 60s )
+   // uint256 public runningTime = 1 hours; // 1 hours
+   // uint256 public constant TOTAL_REWARDS = 20 ether;
     // END TESTNET
 
     // MAINNET
-  //  uint256 public GravePerSecond = 0.00011574074 ether; // 20 grave / (48h * 60min * 60s )
-  //  uint256 public runningTime = 48 hours; // 2 days
-  //  uint256 public constant TOTAL_REWARDS = 20 ether;
+   uint256 public GravePerSecond = 0.00011574074 ether; // 20 grave / (48h * 60min * 60s )
+   uint256 public runningTime = 48 hours; // 2 days
+   uint256 public constant TOTAL_REWARDS = 20 ether;
     // END MAINNET
 
     event Deposit(address indexed user, uint256 indexed pid, uint256 amount);
@@ -715,13 +715,6 @@ contract GraveGenesisRewardPool {
         pool.allocPoint = _allocPoint;
     }
 
-    function setPoolTax(uint256 _pid, uint256 _taxRate, bool _hasTax) public onlyOperator {
-    require(_taxRate <= 10000, "Invalid tax rate"); // 10000 = 100%
-    poolTaxInfo[_pid] = PoolTaxInfo({
-        taxRate: _taxRate,
-        hasTax: _hasTax
-    });
-  }
 
     // Return accumulate rewards over the given _from to _to block.
     function getGeneratedReward(uint256 _fromTime, uint256 _toTime) public view returns (uint256) {
